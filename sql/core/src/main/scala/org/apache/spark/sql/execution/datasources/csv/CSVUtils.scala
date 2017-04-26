@@ -101,7 +101,7 @@ object CSVUtils {
         case 'f' => '\f'
         case '\"' => '\"' // In case user changes quote char and uses \" as delimiter in options
         case '\'' => '\''
-        case 'u' if str == """\u0000""" => '\u0000'
+        case 'u'  => Integer.parseInt(str.substring(2), 16).toChar
         case _ =>
           throw new IllegalArgumentException(s"Unsupported special character for delimiter: $str")
       }
